@@ -7,7 +7,7 @@ Aim: Create a sequence named emp seq with the following specifications:
 • Cycles when the max value is reached
 Then, write a PL/SQL block to fetch and display the next 5 values of the sequence.
 
-
+Tools used:
 • PL/SQL: The procedural extension to SQL, used to write and execute the program.
 • DBMS_OUTPUT.PUT_LINE: A built-in PL/SQL procedure used to output data to
 the console.
