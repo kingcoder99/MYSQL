@@ -1,0 +1,52 @@
+Experiment 3: Stored Procedure - Calculate Factorial
+
+Aim: Write a stored procedure named calc_factorial that:
+• Accepts a number (N) as input.
+• Returns the factorial of that number using a loop.
+• Print the result.
+
+Tools Used:
+• PL/SQL: Oracle's procedural language extension to SQL used to write the procedure.
+• DBMS_OUTPUT.PUT_LINE: A built-in procedure to display output in the Oracle
+console.
+• Oracle Database: The underlying database system to run and execute the procedure.
+
+Code & Output:
+SQL> CREATE OR REPLACE PROCEDURE calc_factorial(N IN NUMBER) IS 
+  2   v_factorial NUMBER := 1; 
+  3   v_counter NUMBER; 
+  4 BEGIN 
+  5   IF N < 0 THEN 
+  6     DBMS_OUTPUT.PUT_LINE('Factorial is not defined for negative numbers.'); 
+  7     RETURN; 
+  8   END IF; 
+  9   
+  10  FOR v_counter IN 1..N LOOP 
+  11    v_factorial := v_factorial * v_counter; 
+  12  END LOOP; 
+  13  
+  14  DBMS_OUTPUT.PUT_LINE('Factorial of ' || N || ' is: ' || v_factorial); 
+  15 END calc_factorial; 
+  16/
+
+SQL> SET SERVEROUTPUT ON; 
+SQL> BEGIN 
+  2   calc_factorial(5); 
+  3 END; 
+  4/
+
+Factorial of 5 is: 120 
+PL/SQL procedure successfully completed.
+
+
+Learning Outcomes:
+• Learners will be able to create stored procedures in PL/SQL to automate tasks.
+• Learners will gain hands-on experience using loops in PL/SQL to perform calculations.
+• Learners will understand how to display output in PL/SQL using the DBMS_OUTPUT.PUT_LINE procedure.
+
+Conclusion:
+This stored procedure illustrates a common use case for loops in PL/SQL—calculating the
+factorial of a given number. By creating and running this procedure, learners will understand
+how to work with PL/SQL blocks, handle input parameters, use loops for iteration, and print
+output to the console. This fundamental skill can be extended to more complex calculations
+and applications in database programming.
