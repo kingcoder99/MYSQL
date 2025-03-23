@@ -1,0 +1,64 @@
+Experiment 4: Collections - Using Associative Arrays
+
+Aim: Write a PL/SQL program that:
+• Declares an associative array (index-by table).
+• Stores the first five employee salaries in the array.
+• Uses a loop to print all salaries from the array.
+
+Tools Used:
+• PL/SQL: Oracle’s procedural language extension to SQL, used to write the program.
+• DBMS_OUTPUT.PUT_LINE: A built-in PL/SQL procedure used to print output to the
+console for debugging and displaying results.
+
+Code & Output:
+
+SQL> CREATE TABLE emp_salaries ( 
+  2   emp_id NUMBER PRIMARY KEY, 
+  3   emp_name VARCHAR2(50), 
+  4   salary NUMBER, 
+  5   department VARCHAR2(50)
+  6); 
+Table created. 
+
+SQL> SET SERVEROUTPUT ON; 
+
+SQL> DECLARE 
+  2   TYPE salary_table IS TABLE OF NUMBER INDEX BY PLS_INTEGER; 
+  3   emp_salaries salary_table; 
+  4   v_index PLS_INTEGER; 
+  5 BEGIN 
+  6   emp_salaries(1) := 50000; 
+  7   emp_salaries(2) := 60000; 
+  8   emp_salaries(3) := 45000; 
+  9   emp_salaries(4) := 70000; 
+  10  emp_salaries(5) := 55000; 
+  11  
+  12  v_index := emp_salaries.FIRST; 
+  13  WHILE v_index IS NOT NULL LOOP 
+  14    DBMS_OUTPUT.PUT_LINE('Employee ' || v_index || ' Salary: ' || emp_salaries(v_index)); 
+  15    v_index := emp_salaries.NEXT(v_index); 
+  16  END LOOP; 
+  17 END; 
+  18 /
+
+Employee 1 Salary: 50000 
+Employee 2 Salary: 60000 
+Employee 3 Salary: 45000 
+Employee 4 Salary: 70000 
+Employee 5 Salary: 55000 
+
+PL/SQL procedure successfully completed.
+
+
+Learning Outcomes:
+By the end of this program, learners will:
+• Understand how to declare and work with associative arrays in PL/SQL.
+• Be able to store data in an associative array and retrieve it using a loop.
+• Know how to print the contents of collections using the DBMS_OUTPUT.PUT_LINE procedure.
+
+Conclusion:
+This PL/SQL program demonstrates the power of associative arrays for managing nonsequential data,
+such as storing employee salaries indexed by employee names. By using a loop to retrieve and print values,
+this example illustrates how collections can be leveraged
+for practical tasks in database programming. The knowledge gained from this example is
+fundamental to managing and processing complex data sets in PL/SQL.

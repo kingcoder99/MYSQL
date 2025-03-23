@@ -1,0 +1,49 @@
+Experiment 5: Error Handling - Handling User-Defined Exceptions
+
+Aim: Write a PL/SQL block that:
+• Accepts a number as input.
+• Raises a user-defined exception if the number is negative (e.g.,
+"NegativeNumberException").
+• Handles the exception using EXCEPTION WHEN and prints an appropriate error message.
+
+Tools Used:
+• PL/SQL: The procedural extension to SQL used for writing the program logic.
+• RAISE statement: Used to raise user-defined exceptions.
+• EXCEPTION block: Used to handle exceptions and errors in PL/SQL.
+• DBMS_OUTPUT.PUT_LINE: A procedure to print output to the console.
+
+Code & Output:
+
+SQL> DECLARE 
+  2   v_number NUMBER := -5; 
+  3 
+  4 BEGIN 
+  5   NegativeNumberException EXCEPTION; 
+  6   IF v_number < 0 THEN 
+  7     RAISE NegativeNumberException; 
+  8   END IF; 
+  9   DBMS_OUTPUT.PUT_LINE('The number is valid: ' || v_number); 
+  10 EXCEPTION 
+  11   WHEN NegativeNumberException THEN 
+  12     DBMS_OUTPUT.PUT_LINE('Error: Negative numbers are not allowed!'); 
+  13 END; 
+  14 /
+
+Error: Negative numbers are not allowed! 
+PL/SQL procedure successfully completed.
+
+
+Learning Outcomes:
+• Learners will be able to declare, raise, and handle user-defined exceptions in PL/SQL.
+• Learners will understand the structure of the EXCEPTION block and how to handle
+errors programmatically.
+• Learners will be able to use error-handling mechanisms to improve the robustness of
+PL/SQL programs.
+
+Conclusion:
+This PL/SQL block demonstrates the use of user-defined exceptions for error handling. By
+raising and catching custom exceptions, such as handling negative numbers, the program
+ensures that only valid data is processed and appropriate messages are displayed for
+erroneous input. Exception handling is an essential skill in PL/SQL programming, and this
+example provides a foundation for managing errors and improving the reliability of database
+applications.
